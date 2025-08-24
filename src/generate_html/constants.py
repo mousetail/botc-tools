@@ -5,12 +5,17 @@ svg_height = 200  # Height of each character SVG
 circle_radius = 80  # Radius of the circular image
 font_size = 20  # Font size for the character name
 description_max_width = 250
-reminder_token_width = 80
+reminder_token_width = 70
 
-margin = 20
+horizontal_margin = 20
+verrtical_margin = 20
 
 svgs_per_page = 21
 
-vertical_squish = 25
+vertical_squish = 47
 
-scale = a4_width / (svg_width * 4 + 20 * 3 + 2 * margin)
+horizontal_space_between_tokens = 25
+
+scale = a4_width / (
+    svg_width * 4 + horizontal_space_between_tokens * 3 + 2 * horizontal_margin
+)

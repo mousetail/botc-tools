@@ -7,8 +7,16 @@ from constants import (
     font_size,
     circle_radius,
     description_max_width,
+    horizontal_margin,
+    verrtical_margin,
 )
 
+def get_token_style():
+    return """
+        stroke="black"
+        stroke-width="1"
+        fill="white"
+    """
 
 def xml_escape(text):
     """Escape special characters for XML."""
@@ -72,7 +80,7 @@ def generate_background_shape(script):
 
         return f"""
             <path
-                fill="#f0f0f0"
+                {get_token_style()}
                 d="
                    M 0 {long_axis * side}
                    L {-short_axis} {long_axis * side}
@@ -85,7 +93,8 @@ def generate_background_shape(script):
                 "
             />
         """
-    return f"""<circle cx="0" cy="0" r="{svg_width / 2}" fill="#f0f0f0"/>"""
+    return f"""<circle cx="0" cy="0" r="{svg_width / 2}" 
+                {get_token_style()}/>"""
 
 
 def split_string_in_lines_on_regex(string, character, max_length):
@@ -154,7 +163,11 @@ def generate_reminder_tokens(image, name, has_daytime_effect, drunk_or_poisoned,
     radius = circle_radius
     height = math.sqrt(2) * radius
 
-    words = [j for i in name.split(" ") for j in ([i] if len(i) > 1 else ["", i])]
+    words = [
+        j
+        for i in name.replace("Is the", "Is\u00a0the").split(" ")
+        for j in ([i] if len(i) > 1 else ["", i])
+    ]
 
     svg = f"""
     <g transform="translate({x} {y + height})">
@@ -164,10 +177,10 @@ def generate_reminder_tokens(image, name, has_daytime_effect, drunk_or_poisoned,
             L {reminder_token_width} {-height / 2} 
             A {radius}, {radius} 0 0, 1 {reminder_token_width}, {height / 2} 
             Z"
-            fill="#f0f0f0"
+            {get_token_style()}
         />
         <g {
-        f'transform="translate({reminder_token_width * 1.5 - 5}) rotate(180)"'
+        f'transform="translate({reminder_token_width * 1.5 + 2}) rotate(180)"'
         if has_daytime_effect and not drunk_or_poisoned
         else ""
     }>
