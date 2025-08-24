@@ -2,11 +2,19 @@ import math
 
 from svg_tools import generate_reminder_tokens, generate_character_svg
 from get_characters import get_character_tokens, get_reminder_tokens, Character
-from constants import a4_width, a4_height, circle_radius, scale, svg_width, svg_height, vertical_squish, reminder_token_width
+from constants import (
+    a4_width,
+    a4_height,
+    circle_radius,
+    scale,
+    svg_width,
+    svg_height,
+    vertical_squish,
+    reminder_token_width,
+)
 
 # Define the path to the characters folder
 characters_folder = "characters"
-
 
 
 def get_page_start_html():

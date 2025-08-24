@@ -2,6 +2,7 @@ from dataclasses import dataclass
 import os
 import json
 
+
 @dataclass
 class Character:
     name: str
@@ -17,6 +18,7 @@ class ReminderToken:
     name: str
     has_daytime_effect: bool
     drunk_or_poisoned: bool
+
 
 def get_character_tokens(characters_folder: str) -> list[Character]:
     character_info: list[Character] = []
