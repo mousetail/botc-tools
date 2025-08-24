@@ -200,8 +200,8 @@ FABLED_CHARACTERS = [
 ]
 
 
-def with_category(l, c):
-    return [(i, c) for i in l]
+def with_category(links: list[str], category: str):
+    return [(i, category) for i in links]
 
 
 ALL_CHARACTERS = [

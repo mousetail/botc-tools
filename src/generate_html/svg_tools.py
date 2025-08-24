@@ -1,7 +1,7 @@
 import re
 import functools
 import math
-from constants import *
+from constants import svg_width, reminder_token_width, font_size, circle_radius, description_max_width
 
 
 def xml_escape(text):

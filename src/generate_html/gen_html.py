@@ -1,32 +1,12 @@
-import os
-import json
-import re
-import functools
 import math
-from dataclasses import dataclass
 
 from svg_tools import generate_reminder_tokens, generate_character_svg
-from constants import *
+from get_characters import get_character_tokens, get_reminder_tokens, Character
+from constants import a4_width, a4_height, circle_radius, scale, svg_width, svg_height, vertical_squish, reminder_token_width
 
 # Define the path to the characters folder
 characters_folder = "characters"
 
-
-@dataclass
-class Character:
-    name: str
-    description: str
-    image: str
-    script: str
-    category: str | None
-
-
-@dataclass
-class ReminderToken:
-    character: Character
-    name: str
-    has_daytime_effect: bool
-    drunk_or_poisoned: bool
 
 
 def get_page_start_html():
@@ -42,58 +22,8 @@ def get_page_start_html():
 
 
 def main():
-    character_info: list[Character] = []
-
-    with open("characters.json") as f:
-        reminder_tokens_info = json.load(f)
-
-    # Read each character's JSON file and generate SVGs
-    for filename in os.listdir(characters_folder):
-        if filename.endswith(".json"):
-            with open(os.path.join(characters_folder, filename), "r") as json_file:
-                character = json.load(json_file)
-                character_info.append(
-                    Character(
-                        name=character["name"],
-                        description=character["description"],
-                        image=character["image"],
-                        script=character["script"],
-                        category=(
-                            (
-                                a := [
-                                    i
-                                    for i in character["groups"]
-                                    if i
-                                    in ("Townsfolk", "Outsider", "Minions", "Demons")
-                                ]
-                            )
-                            and a[0]
-                        )
-                        or None,
-                    )
-                )
-    character_info.sort(key=lambda i: (i.script, i.category or ""))
-    character_name_description_map = {i.name: i for i in character_info}
-
-    reminder_tokens = [
-        ReminderToken(
-            character=character_name_description_map[i["name"]],
-            name=j,
-            has_daytime_effect=(
-                "day" in character_name_description_map[i["name"]].description
-                or "execute" in character_name_description_map[i["name"]].description
-                or "any time" in character_name_description_map[i["name"]].description
-            ),
-            drunk_or_poisoned=j in ("Drunk", "Poisoned"),
-        )
-        for i in reminder_tokens_info
-        for j in i["reminders"]
-        if i["name"] in character_name_description_map
-    ]
-
-    reminder_tokens.sort(key=lambda i: (i.character.script, i.character.category or ""))
-
-    reminder_tokens = [i for i in reminder_tokens if i.name != "No ability"]
+    character_info = get_character_tokens(characters_folder)
+    reminder_tokens = get_reminder_tokens(character_info)
 
     all_infos = character_info + reminder_tokens
 
