@@ -1855,7 +1855,7 @@
         "otherNightReminder": "Choose a player, that player dies.",
         "reminders": [
             "Dead",
-            "About to die"
+            "About to\u00a0die"
         ],
         "setup": true,
         "ability": "Each night*, a player might die. Executions fail if only evil voted. You register as a Minion too. [Most players are Legion]",
@@ -2347,7 +2347,7 @@
         "otherNightReminder": "",
         "reminders": [
             "Drunk",
-            "About to die"
+            "About to\u00a0die"
         ],
         "setup": false,
         "ability": "All players keep their eyes closed when voting and the vote tally is secret. Each night, choose if you are drunk until dusk.",

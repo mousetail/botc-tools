@@ -11,12 +11,14 @@ from constants import (
     verrtical_margin,
 )
 
+
 def get_token_style():
     return """
         stroke="black"
         stroke-width="1"
         fill="white"
     """
+
 
 def xml_escape(text):
     """Escape special characters for XML."""
@@ -35,7 +37,7 @@ def generate_text_path(id, radius, arc, script):
     if script == "fabled":
         return f"""
             <path
-                id="{id}""
+                id="{id}"
                 d="M -60 {-(radius - 5) * side} L 60 {-(radius - 5) * side}"
             />
         """
@@ -147,8 +149,8 @@ def generate_character_svg(character, x, y):
             {generate_text_path(character.name + "-textPathBottom4", circle_radius - 25, 1, character.script)}
         </defs>
         {generate_background_shape(character.script)}
-        <image href="{character.image}" x="{-circle_radius}" y="{-circle_radius}" width="{circle_radius * 2}" height="{circle_radius * 2}" />
-        <text fill="black" font-size="{font_size * (0.8 if character.script == "fabled" else 1.0)}">
+        <image href="../{character.image}" x="{-circle_radius}" y="{-circle_radius}" width="{circle_radius * 2}" height="{circle_radius * 2}" />
+        <text fill="black" font-size="{font_size * (0.7 if character.script == "fabled" else 1.0)}" font-family="Dumbledor">
             <textPath href="#{character.name}-textPathTop" startOffset="50%" text-anchor="middle">{xml_escape(character.name)}</textPath>
         </text>
         <text fill="black" font-size="{font_size / 3}">
@@ -159,56 +161,116 @@ def generate_character_svg(character, x, y):
     return svg
 
 
+def reminder_token_shape():
+    height = math.sqrt(2) * circle_radius
+    return f"""M 0, {height / 2} 
+            A {circle_radius}, {circle_radius} 0 0, 0 0, {-height / 2} 
+            L {reminder_token_width} {-height / 2} 
+            A {circle_radius}, {circle_radius} 0 0, 1 {reminder_token_width}, {height / 2} 
+            Z"""
+
+
 def generate_reminder_tokens(image, name, has_daytime_effect, drunk_or_poisoned, x, y):
     radius = circle_radius
-    height = math.sqrt(2) * radius
+    height = math.sqrt(2) * circle_radius
 
+    svg = f"""
+    <g transform="translate({x} {y + height})">
+        <path d="{reminder_token_shape()}"
+            {
+        get_token_style()
+        if image
+        else 'fill="#b31318"'
+        if name == "Evil"
+        else 'fill="#009bca"'
+        if name == "Good"
+        else 'fill="black"'
+    }
+        />
+        {
+        generate_normal_reminder_token(
+            image, name, has_daytime_effect, drunk_or_poisoned
+        )
+        if image
+        else generate_special_token(name)
+    }
+    </g>
+    """
+    return svg
+
+
+def generate_normal_reminder_token(image, name, has_daytime_effect, drunk_or_poisoned):
     words = [
         j
         for i in name.replace("Is the", "Is\u00a0the").split(" ")
         for j in ([i] if len(i) > 1 else ["", i])
     ]
 
-    svg = f"""
-    <g transform="translate({x} {y + height})">
-        <path d="
-            M 0, {height / 2} 
-            A {radius}, {radius} 0 0, 0 0, {-height / 2} 
-            L {reminder_token_width} {-height / 2} 
-            A {radius}, {radius} 0 0, 1 {reminder_token_width}, {height / 2} 
-            Z"
-            {get_token_style()}
-        />
+    height = math.sqrt(2) * circle_radius
+    return f"""
         <g {
         f'transform="translate({reminder_token_width * 1.5 + 2}) rotate(180)"'
         if has_daytime_effect and not drunk_or_poisoned
         else ""
     }>
-        <image
-            href="{image}"
-            x="{reminder_token_width / 2 - radius / 3 + 20}"
-            y="{-height / 4 - radius / 3}"
-            width="{radius / 1.5}" height="{radius / 1.5}"
-            transform-origin="{reminder_token_width / 2 + 20} {-height / 4}"
-            {'transform="rotate(90)"' if drunk_or_poisoned else ""}
-        />
+            <image
+                href="../{image}"
+                x="{reminder_token_width / 2 - circle_radius / 3 + 20}"
+                y="{-height / 4 - circle_radius / 3}"
+                width="{circle_radius / 1.5}" height="{circle_radius / 1.5}"
+                transform-origin="{reminder_token_width / 2 + 20} {-height / 4}"
+                {'transform="rotate(90)"' if drunk_or_poisoned else ""}
+            />
             {
         "".join(
             f'''<text
-                    fill="black"
-                    transform-origin="{reminder_token_width / 2 + 20} {height / 4 + 10 * index - 5 * len(words)}"
-                    {'transform="rotate(90)"' if drunk_or_poisoned else ""}
-                    font-size="{font_size / 2 if len(name) > 1 else font_size}"
-                    x="{reminder_token_width / 2 + 20}"
-                    y="{height / 4 + 10 * index - 5 * len(words)}"
-                    text-anchor="middle"
-                >
-                {xml_escape(name)}
-            </text>'''
+                        fill="{"black" if image is not None else "white"}"
+
+                        transform-origin="
+                            {reminder_token_width / 2 + 20 if image is not None else 0}
+                            {height / 4 + 10 * index - 5 * len(words)}
+                        "
+                        x="{reminder_token_width / 2 + 20}"
+                        y="{height / 4 + 10 * index - 5 * len(words)}"
+
+                        {'transform="rotate(90)"' if drunk_or_poisoned else ""}
+                        font-size="{
+                font_size * 1.5
+                if image is None
+                else font_size / 2
+                if len(name) > 1
+                else font_size
+            }"
+                        {'font-family="Dumbledor"' if len(name) < 2 else ""}
+                        text-anchor="middle"
+                    >
+                    {xml_escape(name)}
+                </text>'''
             for index, name in enumerate(words)
         )
     }
-        </g>
     </g>
     """
-    return svg
+
+
+def generate_special_token(name):
+    height = math.sqrt(2) * circle_radius
+    id = name.lower().replace(" ", "-") + "-reminder-token"
+
+    offset = 25
+
+    return f"""
+        <defs>
+            <path
+                id="{id}"
+                d="
+                    M {reminder_token_width - offset}, {height / 2} 
+                    A {circle_radius}, {circle_radius} 0 0, 0 {reminder_token_width - offset}, {-height / 2}
+                "
+            />
+        </defs>
+        <text fill="white" font-size="{font_size * 1.5}" letter-spacing="3" font-family="Dumbledor">
+            <textPath href="#{id}" startOffset="50%" text-anchor="middle">{xml_escape(name)}</textPath>
+        </text>
+    """
+    pass

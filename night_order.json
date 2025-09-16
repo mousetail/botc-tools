@@ -1,0 +1,690 @@
+{
+    "first_night_info": [
+        {
+            "name": "Drunk",
+            "description": "<span>Assign which Townsfolk is actually the Drunk.</span>"
+        },
+        {
+            "name": "Wraith",
+            "description": "<span>Wake the Wraith tonight whenever other evil players wake. If the Wraith is drunk or poisoned, show them <a><strong>DO NOT OPEN YOUR EYES TONIGHT</strong></a>.</span>"
+        },
+        {
+            "name": "Djinn",
+            "description": "<span>Inform the group of all Djinn special rules for this game.</span>"
+        },
+        {
+            "name": "Bootlegger",
+            "description": "<span>Inform the group of all homebrew characters or rules for this game.</span>"
+        },
+        {
+            "name": "Lord of Typhon",
+            "description": "<span>Wake the appropriate number of minions around the Lord of Typhon.<br> \u2003Show them <a><strong>YOU ARE</strong></a> and a unique Minion token, tell them <a><strong>YOU ARE EVIL</strong></a>, and put them to sleep.</span>"
+        },
+        {
+            "name": "Kazali",
+            "description": "<span>The Kazali points to a player and a Minion on the character sheet. They do this for as many Minions as should be in play. Change those players' tokens to the chosen Minion tokens. Wake those players, show them the <a><strong>YOU ARE</strong></a> card, the Minions they have become, and a thumbs down.</span>"
+        },
+        {
+            "name": "Apprentice",
+            "description": "<span>Show the Apprentice the <a><strong>YOU ARE</strong></a> card, then a Townsfolk or Minion token. In the Grimoire, replace the Apprentice token with that character token, and put the Apprentice's 'Is The Apprentice' reminder by that character token.</span>"
+        },
+        {
+            "name": "Barista",
+            "description": "<span>Choose a player, wake them and tell them which Barista power is affecting them. Treat them accordingly (sober/healthy/true info or activate their ability twice).</span>"
+        },
+        {
+            "name": "Bureaucrat",
+            "description": "<span>The Bureaucrat points to a player. Put the Bureaucrat's '3 Votes' reminder by the chosen player's character token.</span>"
+        },
+        {
+            "name": "Thief",
+            "description": "<span>The Thief points to a player. Put the Thief's 'Negative Vote' reminder by the chosen player's character token.</span>"
+        },
+        {
+            "name": "Boffin",
+            "description": "<span>Show the Boffin and the Demon the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> token, then the Boffin token, then the good character's token.</span>"
+        },
+        {
+            "name": "Philosopher",
+            "description": "<span>The Philosopher might pick a good character. <br>If they chose a character:<br>\u2003Give them that ability.<br> \u2003If the character is in play, make them drunk.</span>"
+        },
+        {
+            "name": "Alchemist",
+            "description": "<span>Show the Alchemist the Minion token of the ability they have</span>"
+        },
+        {
+            "name": "Poppy Grower",
+            "description": "<span>Do not inform the Demon/Minions who each other are</span>"
+        },
+        {
+            "name": "Yaggababble",
+            "description": "<span>Show the Yaggababble their secret phrase.</span>"
+        },
+        {
+            "name": "Minion Info",
+            "description": "<span>If 7 or more players:<br> \u2003Wake all Minions. Show the <a><strong>THIS IS THE DEMON</strong></a> token.<br> \u2003Point to the Demon.</span>"
+        },
+        {
+            "name": "Snitch",
+            "description": "<span>After Minion info wake each Minion and show them three not-in-play character tokens. These may be the same or different to each other and the ones shown to the Demon.</span>"
+        },
+        {
+            "name": "Lunatic",
+            "description": "<span>If 7 or more players:<br> \u2003Show <a><strong>THESE ARE YOUR MINIONS</strong></a>. Point to \"Minions\".<br> \u2003Show three bluffs.<br> \u2003Put the Lunatic to sleep.<br> Wake the demon. Show the <a><strong>YOU ARE</strong></a> token, and the Demon token.<br> Show <a><strong>THIS PLAYER IS</strong></a> and the Lunatic token, point to the Lunatic.</span>"
+        },
+        {
+            "name": "Summoner",
+            "description": "<span>Show the Summoner <a><strong>THESE CHARACTERS ARE NOT IN PLAY</strong></a> and three bluffs.</span>"
+        },
+        {
+            "name": "Demon Info",
+            "description": "<span>If there are 7 or more players:<br>\u2003Wake the Demon.<br> \u2003Show the <a><strong>THESE ARE YOUR MINIONS</strong></a> token. Point to all Minions.<br> \u2003Show <a><strong>THESE CHARACTERS ARE NOT IN PLAY</strong></a> and three bluffs.</span>"
+        },
+        {
+            "name": "Storm Catcher",
+            "description": "<span>If the named character is in play, show the evil players <a><strong>THIS PLAYER IS</strong></a> and the character token.<br>If not, show them <a><strong>STORM CAUGHT CHARACTER IS NOT IN PLAY</strong></a>.</span>"
+        },
+        {
+            "name": "King",
+            "description": "<span>Wake the Demon, show them <a><strong>THIS PLAYER IS</strong></a> and point to the King player.</span>"
+        },
+        {
+            "name": "Sailor",
+            "description": "<span>The Sailor points to a living player. Either the Sailor, or the chosen player, is drunk.</span>"
+        },
+        {
+            "name": "Marionette",
+            "description": "<span>Select one of the good players next to the Demon and mark them with Is the Marionette. Wake the Demon and show them <a><strong>THIS PLAYER IS</strong></a> and the Marionette token.</span>"
+        },
+        {
+            "name": "Engineer",
+            "description": "<span>The Engineer shows a 'no' head signal, or points to a Demon or points to the relevant number of Minions. If the Engineer chose characters, replace the Demon or Minions with the choices, then wake the relevant players and show them the <a><strong>YOU ARE</strong></a> card and the relevant character tokens.</span>"
+        },
+        {
+            "name": "Preacher",
+            "description": "<span>The Preacher chooses a player. If a Minion is chosen, wake the Minion and show the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> card and then the Preacher token.</span>"
+        },
+        {
+            "name": "Lil\u2019 Monsta",
+            "description": "<span>Wake all Minions together, allow them to vote by pointing at who they want to babysit Lil' Monsta.</span>"
+        },
+        {
+            "name": "Lleech",
+            "description": "<span>The Lleech points to a player. Place the Poisoned reminder token.</span>"
+        },
+        {
+            "name": "Xaan",
+            "description": "<span>If there is 1 Outsider, all Townsfolk are poisoned until dusk.</span>"
+        },
+        {
+            "name": "Poisoner",
+            "description": "<span>The Poisoner picks a player to poison.</span>"
+        },
+        {
+            "name": "Widow",
+            "description": "<span>Show the Grimoire to the Widow for as long as they need. The Widow points to a player. That player is poisoned. Wake a good player. Show the <a><strong>THIS CHARACTER IS IN PLAY</strong></a> card, then the Widow character token.</span>"
+        },
+        {
+            "name": "Courtier",
+            "description": "<span>The Courtier either shows a 'no' head signal, or points to a character on the sheet. <br>If the Courtier used their ability:<br> If that character is in play, that player is drunk.</span>"
+        },
+        {
+            "name": "Wizard",
+            "description": "<span>If the Wizard's wish requires actions at night, run these.</span>"
+        },
+        {
+            "name": "Snake Charmer",
+            "description": "<span>The Snake Charmer points to a player. <br>If that player is the Demon:<br>\u2003swap the Demon and Snake Charmer character and alignments.<br>\u2003Wake each player and show them <a><strong>YOU ARE</strong></a> and their new role and alignment.<br>The new Snake Charmer is poisoned.</span>"
+        },
+        {
+            "name": "Godfather",
+            "description": "<span>Show each of the Outsider tokens in play.</span>"
+        },
+        {
+            "name": "Organ Grinder",
+            "description": "<span>Wake the Organ Grinder. If they give the 'yes' head signal, mark them Drunk. If they give the 'no' head signal, remove the Drunk reminder.</span>"
+        },
+        {
+            "name": "Devil\u2019s Advocate",
+            "description": "<span>The Devil's Advocate points to a living player. That player survives execution tomorrow.</span>"
+        },
+        {
+            "name": "Evil Twin",
+            "description": "<span>Wake the Evil Twin and their twin. Confirm that they have acknowledged each other. Point to the Evil Twin. Show their Evil Twin token to the twin player. Point to the twin. Show their character token to the Evil Twin player.</span>"
+        },
+        {
+            "name": "Witch",
+            "description": "<span>The Witch points to a player. If that player nominates tomorrow they die immediately.</span>"
+        },
+        {
+            "name": "Cerenovus",
+            "description": "<span>The Cerenovus chooses a player and character. Wake the target.<br> Show <a><strong>THIS CHARACTER SELECTED YOU</strong></a>, the Cerenovus token, and the madness character.</span>"
+        },
+        {
+            "name": "Fearmonger",
+            "description": "<span>The Fearmonger points to a player. Place the Fear token next to that player and announce that a new player has been selected with the Fearmonger ability.</span>"
+        },
+        {
+            "name": "Harpy",
+            "description": "<span>The Harpy chooses two players. Mark both Harpy selected. Tell the first player <a><strong>THIS CHARACTER SELECTED YOU</strong></a> and point to the second player.</span>"
+        },
+        {
+            "name": "Mezepheles",
+            "description": "<span>Show the Mezepheles their secret word.</span>"
+        },
+        {
+            "name": "Pukka",
+            "description": "<span>The Pukka points to a player. That player is poisoned.</span>"
+        },
+        {
+            "name": "Pixie",
+            "description": "<span>Show the Pixie 1 in-play Townsfolk character token.</span>"
+        },
+        {
+            "name": "Huntsman",
+            "description": "<span>The Huntsman shakes their head 'no' or points to a player. If they point to the Damsel, wake that player, show the <a><strong>YOU ARE</strong></a> card and a not-in-play character token.</span>"
+        },
+        {
+            "name": "Damsel",
+            "description": "<span>Wake all the Minions, show them <a><strong>THIS CHARACTER IS IN PLAY</strong></a> and the Damsel token.</span>"
+        },
+        {
+            "name": "Amnesiac",
+            "description": "<span>Decide the Amnesiac's entire ability. <br>If the Amnesiac's ability causes them to wake tonight:<br> Wake the Amnesiac and run their ability.</span>"
+        },
+        {
+            "name": "Washerwoman",
+            "description": "<span>Show a Townsfolk token and two players.</span>"
+        },
+        {
+            "name": "Librarian",
+            "description": "<span>Show an Outsider token and two players.</span>"
+        },
+        {
+            "name": "Investigator",
+            "description": "<span>Show a Minion token and two players.</span>"
+        },
+        {
+            "name": "Chef",
+            "description": "<span>Show the number of pairs of neighboring evil players.</span>"
+        },
+        {
+            "name": "Empath",
+            "description": "<span>Show the finger signal (0, 1, 2) for the number of evil alive neighbors.</span>"
+        },
+        {
+            "name": "Fortune Teller",
+            "description": "<span>The Fortune Teller points to two players. Give a yes if one is the Demon (or red herring).</span>"
+        },
+        {
+            "name": "Butler",
+            "description": "<span>The Butler points to a player. Mark that player as 'Master'.</span>"
+        },
+        {
+            "name": "Grandmother",
+            "description": "<span>Show the marked character token. Point to the marked player.</span>"
+        },
+        {
+            "name": "Clockmaker",
+            "description": "<span>Show the number of places from Demon to closest Minion.</span>"
+        },
+        {
+            "name": "Dreamer",
+            "description": "<span>The Dreamer points to a player. Show 1 good and 1 evil character token; one of these is correct.</span>"
+        },
+        {
+            "name": "Seamstress",
+            "description": "<span>The Seamstress either shows a 'no' head signal, or points to two other players. If the Seamstress chose players , nod 'yes' or shake 'no' for whether they are of same alignment.</span>"
+        },
+        {
+            "name": "Steward",
+            "description": "<span>Point to the player marked Know (who is good).</span>"
+        },
+        {
+            "name": "Knight",
+            "description": "<span>Point to the two players marked Know (one is the Demon).</span>"
+        },
+        {
+            "name": "Noble",
+            "description": "<span>Point to 3 players including one evil player, in no particular order.</span>"
+        },
+        {
+            "name": "Balloonist",
+            "description": "<span>Choose a character type. Point to a player whose character is of that type. Place the Balloonist's Seen reminder next to that character.</span>"
+        },
+        {
+            "name": "Shugenja",
+            "description": "<span>Wake the Shugenja. Point horizontally in the direction of the closest evil player.</span>"
+        },
+        {
+            "name": "Village Idiot",
+            "description": "<span>Choose an extra Village Idiot to be drunk. Each Village Idiot chooses a player. Show them the alignment of that player.</span>"
+        },
+        {
+            "name": "Bounty Hunter",
+            "description": "<span>Point to 1 evil player. Wake the townsfolk who is evil and show them <a><strong>YOU ARE EVIL</strong></a> and the thumbs-down sign.</span>"
+        },
+        {
+            "name": "Nightwatchman",
+            "description": "<span>The Nightwatchman may point to a player. Wake that player, show the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> card and the Nightwatchman token, then point to the Nightwatchman player.</span>"
+        },
+        {
+            "name": "Cult Leader",
+            "description": "<span>The Cult Leader might change alignment to match an alive neighbor. If it changed, tell the Cult Leader <a><strong>YOU ARE EVIL</strong></a> or <a><strong>YOU ARE GOOD</strong></a>.</span>"
+        },
+        {
+            "name": "Spy",
+            "description": "<span>Show the Grimoire to the Spy for as long as they need.</span>"
+        },
+        {
+            "name": "Ogre",
+            "description": "<span>The Ogre points to a player (not themselves) and becomes their alignment.</span>"
+        },
+        {
+            "name": "High Priestess",
+            "description": "<span>Point to a player the High Priestess should talk to.</span>"
+        },
+        {
+            "name": "General",
+            "description": "<span>Show the General thumbs up for good winning, thumbs down for evil winning or thumb to the side for neither.</span>"
+        },
+        {
+            "name": "Chambermaid",
+            "description": "<span>The Chambermaid points to two players. Show the number signal (0, 1, 2, \u2026) for how many of those players wake tonight for their ability.</span>"
+        },
+        {
+            "name": "Mathematician",
+            "description": "<span>Show the hand signal for the number (0, 1, 2, etc.) of players whose ability malfunctioned due to other abilities.</span>"
+        },
+        {
+            "name": "Leviathan",
+            "description": "<span>Place the Leviathan 'Day 1' marker. Announce 'The Leviathan is in play. This is Day 1.'</span>"
+        },
+        {
+            "name": "Vizier",
+            "description": "<span>Announce which player is the Vizier.</span>"
+        }
+    ],
+    "other_nights_info": [
+        {
+            "name": "Wraith",
+            "description": "<span>Wake the Wraith tonight whenever other evil players wake. If the Wraith is drunk or poisoned, show them <a><strong>DO NOT OPEN YOUR EYES TONIGHT</strong></a>.</span>"
+        },
+        {
+            "name": "Toymaker",
+            "description": "<span>If it is a night when a Demon attack could end the game, and the Demon is marked \u201cFinal night:<br> No Attack,\u201d then the Demon does not act tonight. (Do not wake them.)</span>"
+        },
+        {
+            "name": "Duchess",
+            "description": "<span>Wake each player marked \u201cVisitor\u201d or \u201cFalse Info\u201d one at a time. Show them the Duchess token, then fingers (1, 2, 3) equaling the number of evil players marked \u201cVisitor\u201d or, if <a><strong>YOU ARE</strong></a> waking the player marked \u201cFalse Info,\u201d show them any number of fingers except the number of evil players marked \u201cVisitor.\u201d</span>"
+        },
+        {
+            "name": "Barista",
+            "description": "<span>Choose a player, wake them and tell them which Barista power is affecting them. Treat them accordingly (sober/healthy/true info or activate their ability twice).</span>"
+        },
+        {
+            "name": "Cacklejack",
+            "description": "<span>Replace the character token of any player (besides the player the Cacklejack chose today) with a different character token. Wake that player and show them the <a><strong>YOU ARE</strong></a> card and their new character token.</span>"
+        },
+        {
+            "name": "Bureaucrat",
+            "description": "<span>The Bureaucrat points to a player. Put the Bureaucrat's '3 Votes' reminder by the chosen player's character token.</span>"
+        },
+        {
+            "name": "Thief",
+            "description": "<span>The Thief points to a player. Put the Thief's 'Negative Vote' reminder by the chosen player's character token.</span>"
+        },
+        {
+            "name": "Harlot",
+            "description": "<span>The Harlot points at any player. Then, put the Harlot to sleep. Wake the chosen player, show them the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> token, then the Harlot token. That player either nods their head yes or shakes their head no. If they nodded their head yes, wake the Harlot and show them the chosen player's character token. Then, you may decide that both players die.</span>"
+        },
+        {
+            "name": "Bone Collector",
+            "description": "<span>The Bone Collector either shakes their head no or points at any dead player. If they pointed at any dead player, put the Bone Collector's 'Has Ability' reminder by the chosen player's character token. (They may need to be woken tonight to use it.)</span>"
+        },
+        {
+            "name": "Cannibal",
+            "description": "<span>Mark the recently killed executee with the 'Lunch' token. If they are good, the Cannibal will wake tonight when the executee would have woken. If they are evil, mark the Cannibal as 'Poisoned'. The Storyteller may pretend that the Cannibal has any ability.</span>"
+        },
+        {
+            "name": "Philosopher",
+            "description": "<span>The Philosopher might pick a good character. <br>If they chose a character:<br>\u2003Give them that ability.<br> \u2003If the character is in play, make them drunk.</span>"
+        },
+        {
+            "name": "Poppy Grower",
+            "description": "<span>If the Poppy Grower has died, show the Minions/Demon who each other are.</span>"
+        },
+        {
+            "name": "Sailor",
+            "description": "<span>The previously drunk player is no longer drunk. The Sailor points to a living player. Either the Sailor, or the chosen player, is drunk.</span>"
+        },
+        {
+            "name": "Engineer",
+            "description": "<span>The Engineer shows a 'no' head signal, or points to a Demon or points to the relevant number of Minions. If the Engineer chose characters, replace the Demon or Minions with the choices, then wake the relevant players and show them the <a><strong>YOU ARE</strong></a> card and the relevant character tokens.</span>"
+        },
+        {
+            "name": "Preacher",
+            "description": "<span>The Preacher chooses a player. If a Minion is chosen, wake the Minion and show the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> card and then the Preacher token.</span>"
+        },
+        {
+            "name": "Xaan",
+            "description": "<span>If it is Night X, all Townsfolk are poisoned until dusk.</span>"
+        },
+        {
+            "name": "Poisoner",
+            "description": "<span>The Poisoner picks a player to poison.</span>"
+        },
+        {
+            "name": "Courtier",
+            "description": "<span>Reduce the remaining number of days the marked player is poisoned. <br>If the Courtier has not yet used their ability:<br> The Courtier either shows a 'no' head signal, or points to a character on the sheet. <br>If the Courtier used their ability:<br> If that character is in play, that player is drunk.</span>"
+        },
+        {
+            "name": "Innkeeper",
+            "description": "<span>The Innkeeper points to two players, who are both safe from the Demon. One is drunk.</span>"
+        },
+        {
+            "name": "Wizard",
+            "description": "<span>If the Wizard's wish requires actions at night, run these.</span>"
+        },
+        {
+            "name": "Gambler",
+            "description": "<span>The Gambler points to a player, and a character on their sheet. If incorrect, the Gambler dies.</span>"
+        },
+        {
+            "name": "Acrobat",
+            "description": "<span>The Acrobat points to a player. If that player is or becomes drunk or poisoned tonight, the Acrobat dies.</span>"
+        },
+        {
+            "name": "Snake Charmer",
+            "description": "<span>The Snake Charmer points to a player. <br>If that player is the Demon:<br>\u2003swap the Demon and Snake Charmer character and alignments.<br>\u2003Wake each player and show them <a><strong>YOU ARE</strong></a> and their new role and alignment.<br>The new Snake Charmer is poisoned.</span>"
+        },
+        {
+            "name": "Monk",
+            "description": "<span>The Monk protects a player from the Demon.</span>"
+        },
+        {
+            "name": "Organ Grinder",
+            "description": "<span>Wake the Organ Grinder. If they give the 'yes' head signal, mark them Drunk. If they give the 'no' head signal, remove the Drunk reminder.</span>"
+        },
+        {
+            "name": "Devil\u2019s Advocate",
+            "description": "<span>The Devil's Advocate points to a living player, different from the previous night. That player survives execution tomorrow.</span>"
+        },
+        {
+            "name": "Witch",
+            "description": "<span>If there are 4 or more players alive:<br> The Witch points to a player. If that player nominates tomorrow they die immediately.</span>"
+        },
+        {
+            "name": "Cerenovus",
+            "description": "<span>The Cerenovus chooses a player and character. Wake the target.<br> Show <a><strong>THIS CHARACTER SELECTED YOU</strong></a>, the Cerenovus token, and the madness character.</span>"
+        },
+        {
+            "name": "Pit-Hag",
+            "description": "<span>The Pit-Hag points to a player and a character on the sheet. If this character is not in play, wake that player and show them the <a><strong>YOU ARE</strong></a> card and the relevant character token. If the character is in play, nothing happens.</span>"
+        },
+        {
+            "name": "Fearmonger",
+            "description": "<span>The Fearmonger points to a player. If different from the previous night, place the Fear token next to that player and announce that a new player has been selected with the Fearmonger ability.</span>"
+        },
+        {
+            "name": "Harpy",
+            "description": "<span>The Harpy chooses two players. Mark both Harpy selected. Tell the first player <a><strong>THIS CHARACTER SELECTED YOU</strong></a> and point to the second player.</span>"
+        },
+        {
+            "name": "Mezepheles",
+            "description": "<span>Wake the 1st good player that said the Mezepheles' secret word and show them <a><strong>YOU ARE EVIL</strong></a> and the thumbs-down sign.</span>"
+        },
+        {
+            "name": "Scarlet Woman",
+            "description": "<span>If the Scarlet Woman became the Demon today:<br> Show the <a><strong>YOU ARE</strong></a> card, then the demon token.</span>"
+        },
+        {
+            "name": "Summoner",
+            "description": "<span>If it is the 3rd night, wake the Summoner.<br> \u2003They point to a player and a Demon on the character sheet - that player becomes that Demon.<br> \u2003Show the player <a><strong>YOU ARE</strong></a> and the demon token, and <a><strong>YOU ARE EVIL</strong></a>.</span>"
+        },
+        {
+            "name": "Lunatic",
+            "description": "<span>Do whatever is needed to simulate the demon.</span>"
+        },
+        {
+            "name": "Exorcist",
+            "description": "<span>The Exorcist points to a player, different from the previous night. <br>If that player is the Demon:<br> \u2003Wake the Demon.<br> \u2003Show <a><strong>THIS PLAYER IS</strong></a> and the Exorcist.<br> \u2003The Demon does not act tonight.</span>"
+        },
+        {
+            "name": "Lycanthrope",
+            "description": "<span>The Lycanthrope points to a living player: if good, they die and the Demon does not kill tonight.</span>"
+        },
+        {
+            "name": "Princess",
+            "description": "<span>If it was the Princess' first day today, and they nominated and executed a player, the Demon doesn't kill.</span>"
+        },
+        {
+            "name": "Legion",
+            "description": "<span>The Storyteller may choose a player, that player dies.</span>"
+        },
+        {
+            "name": "Imp",
+            "description": "<span>The Imp kills a player. If they chose themselves,<br> replace an alive Minion with an Imp token. Show them <a><strong>YOU ARE</strong></a> and then the Imp token.</span>"
+        },
+        {
+            "name": "Zombuul",
+            "description": "<span>If no-one died during the day:<br> The Zombuul points to a player. That player dies.</span>"
+        },
+        {
+            "name": "Pukka",
+            "description": "<span>The Pukka points to a player. That player is poisoned. The previously poisoned player dies.</span>"
+        },
+        {
+            "name": "Shabaloth",
+            "description": "<span>One player that the Shabaloth chose the previous night might be resurrected. The Shabaloth points to two players. Those players die.</span>"
+        },
+        {
+            "name": "Po",
+            "description": "<span>If the Po chose no-one the previous night:<br> The Po points to three players. Otherwise: The Po either shows the 'no' head signal , or points to a player. Chosen players die</span>"
+        },
+        {
+            "name": "Fang Gu",
+            "description": "<span>The Fang Gu points to a player. That player dies.<br> If an outsider was closen and there is no other Fang Gu, the Fang Gu dies and show <b>YOU ARE EVIL</b> and <b>YOU ARE</b> Fang Go to the outsider.</span>"
+        },
+        {
+            "name": "No Dashii",
+            "description": "<span>The No Dashii points to a player. That player dies.</span>"
+        },
+        {
+            "name": "Vortox",
+            "description": "<span>The Vortox points to a player. That player dies.</span>"
+        },
+        {
+            "name": "Lord of Typhon",
+            "description": "<span>The Lord of Typhon chooses a player. That player dies.</span>"
+        },
+        {
+            "name": "Vigormortis",
+            "description": "<span>The Vigormortis points to a player. That player dies. If a Minion, they keep their ability and one of their Townsfolk neighbors is poisoned.</span>"
+        },
+        {
+            "name": "Ojo",
+            "description": "<span>The Ojo chooses a character. If that character is in play, that player dies. If that character is not in play, choose any player. That player dies.</span>"
+        },
+        {
+            "name": "Al-Hadikhia",
+            "description": "<span>The Al-Hadikhia might choose 3 players. If so, announce the first player, wake them to nod yes to live or shake head no to die, kill or resurrect accordingly, then put to sleep and announce the next player. If all 3 are alive after this, all 3 die.</span>"
+        },
+        {
+            "name": "Lleech",
+            "description": "<span>The Lleech points to a player. That player dies.</span>"
+        },
+        {
+            "name": "Lil\u2019 Monsta",
+            "description": "<span>Wake all Minions together, allow them to vote by pointing at who they want to babysit Lil' Monsta.</span>"
+        },
+        {
+            "name": "Yaggababble",
+            "description": "<span>Choose a number of players up to the total number of times the Yaggababble said their secret phrase publicly; those players die.</span>"
+        },
+        {
+            "name": "Kazali",
+            "description": "<span>The Kazali chooses a player. That player dies.</span>"
+        },
+        {
+            "name": "Assassin",
+            "description": "<span>If the Assassin has not yet used their ability:<br> The Assassin either shows the 'no' head signal, or points to a player. That player dies.</span>"
+        },
+        {
+            "name": "Godfather",
+            "description": "<span>If an Outsider died today:<br> The Godfather points to a player. That player dies.</span>"
+        },
+        {
+            "name": "Gossip",
+            "description": "<span>If the Gossip's public statement was true:<br> Choose a player not protected from dying tonight. That player dies.</span>"
+        },
+        {
+            "name": "Hatter",
+            "description": "<span>If the Hatter died, show the Minion and Demon players the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> and allow them to pick a new character.</span>"
+        },
+        {
+            "name": "Barber",
+            "description": "<span>If the Barber died today:<br> Wake the Demon. Show the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> card, then Barber token. The Demon either shows a 'no' head signal, or points to 2 players. <br>If they chose players: Swap the character tokens. Wake each player. Show <a><strong>YOU ARE</strong></a>, then their new character token.</span>"
+        },
+        {
+            "name": "Sweetheart",
+            "description": "<span>Choose a player that is drunk.</span>"
+        },
+        {
+            "name": "Sage",
+            "description": "<span>If the Sage was killed by a Demon:<br> Point to two players, one of which is that Demon.</span>"
+        },
+        {
+            "name": "Banshee",
+            "description": "<span>If the Demon kills the Banshee, announce that the Banshee has awoken.</span>"
+        },
+        {
+            "name": "Professor",
+            "description": "<span>If the Professor has not used their ability:<br> The Professor either shakes their head no, or points to a player. If that player is a Townsfolk, they are now alive.</span>"
+        },
+        {
+            "name": "Choirboy",
+            "description": "<span>If the King was killed by the Demon, wake the Choirboy and point to the Demon player.</span>"
+        },
+        {
+            "name": "Huntsman",
+            "description": "<span>The Huntsman shakes their head 'no' or points to a player. If they point to the Damsel, wake that player, show the <a><strong>YOU ARE</strong></a> card and a not-in-play character token.</span>"
+        },
+        {
+            "name": "Damsel",
+            "description": "<span>If selected by the Huntsman, wake the Damsel, show <a><strong>YOU ARE</strong></a> card and a not-in-play Townsfolk token.</span>"
+        },
+        {
+            "name": "Amnesiac",
+            "description": "<span>If the Amnesiac's ability causes them to wake tonight:<br> Wake the Amnesiac and run their ability.</span>"
+        },
+        {
+            "name": "Farmer",
+            "description": "<span>If a Farmer died tonight, choose another good player and make them the Farmer. Wake this player, and show them the <a><strong>YOU ARE</strong></a> card and the Farmer character token.</span>"
+        },
+        {
+            "name": "Tinker",
+            "description": "<span>The Tinker might die.</span>"
+        },
+        {
+            "name": "Moonchild",
+            "description": "<span>If the Moonchild used their ability to target a player today:<br> If that player is good, they die.</span>"
+        },
+        {
+            "name": "Grandmother",
+            "description": "<span>If the Grandmother's grandchild was killed by the Demon tonight:<br> The Grandmother dies.</span>"
+        },
+        {
+            "name": "Ravenkeeper",
+            "description": "<span>If the Ravenkeeper died tonight:<br> The Ravenkeeper points to a player. Show that player's character token.</span>"
+        },
+        {
+            "name": "Empath",
+            "description": "<span>Show the finger signal (0, 1, 2) for the number of evil alive neighbors.</span>"
+        },
+        {
+            "name": "Fortune Teller",
+            "description": "<span>The Fortune Teller points to two players. Give a yes if one is the Demon (or red herring).</span>"
+        },
+        {
+            "name": "Undertaker",
+            "description": "<span>If a player was executed today:<br> Show that player's character token.</span>"
+        },
+        {
+            "name": "Dreamer",
+            "description": "<span>The Dreamer points to a player. Show 1 good and 1 evil character token; one of these is correct.</span>"
+        },
+        {
+            "name": "Flowergirl",
+            "description": "<span>Nod 'yes' or shake head 'no' for whether the Demon voted today. Place the 'Demon Not Voted' marker (remove 'Demon Voted', if any).</span>"
+        },
+        {
+            "name": "Town Crier",
+            "description": "<span>Give a 'yes' or 'no' for if a Minion nominated today.</span>"
+        },
+        {
+            "name": "Oracle",
+            "description": "<span>Show the hand signal for the number (0, 1, 2, etc.) of dead evil players.</span>"
+        },
+        {
+            "name": "Seamstress",
+            "description": "<span>If the Seamstress has not yet used their ability:<br> the Seamstress either shows a 'no' head signal, or points to two other players. If the Seamstress chose players , nod 'yes' or shake 'no' for whether they are of same alignment.</span>"
+        },
+        {
+            "name": "Juggler",
+            "description": "<span>If today was the Juggler's first day:<br> Show the hand signal for the number (0, 1, 2, etc.) of 'Correct' markers. Remove markers.</span>"
+        },
+        {
+            "name": "Balloonist",
+            "description": "<span>Choose a character type that does not yet have a Seen reminder next to a character of that type. Point to a player whose character is of that type, if there are any. Place the Balloonist's Seen reminder next to that character.</span>"
+        },
+        {
+            "name": "Village Idiot",
+            "description": "<span>Each Village Idiot chooses a player. Show them the alignment of that player.</span>"
+        },
+        {
+            "name": "King",
+            "description": "<span>If dead equal or outnumber the living, show the King a character token of a living player.</span>"
+        },
+        {
+            "name": "Bounty Hunter",
+            "description": "<span>If the known evil player has died, point to another evil player.</span>"
+        },
+        {
+            "name": "Nightwatchman",
+            "description": "<span>The Nightwatchman may point to a player. Wake that player, show the <a><strong>THIS CHARACTER SELECTED YOU</strong></a> card and the Nightwatchman token, then point to the Nightwatchman player.</span>"
+        },
+        {
+            "name": "Cult Leader",
+            "description": "<span>The Cult Leader might change alignment to match an alive neighbor. If it changed, tell the Cult Leader <a><strong>YOU ARE EVIL</strong></a> or <a><strong>YOU ARE GOOD</strong></a>.</span>"
+        },
+        {
+            "name": "Butler",
+            "description": "<span>The Butler points to a player. Mark that player as 'Master'.</span>"
+        },
+        {
+            "name": "Spy",
+            "description": "<span>Show the Grimoire to the Spy for as long as they need.</span>"
+        },
+        {
+            "name": "High Priestess",
+            "description": "<span>Point to a player the High Priestess should talk to.</span>"
+        },
+        {
+            "name": "General",
+            "description": "<span>Show the General thumbs up for good winning, thumbs down for evil winning or thumb to the side for neither.</span>"
+        },
+        {
+            "name": "Chambermaid",
+            "description": "<span>The Chambermaid points to two players. Show the number signal (0, 1, 2, \u2026) for how many of those players wake tonight for their ability.</span>"
+        },
+        {
+            "name": "Mathematician",
+            "description": "<span>Show the hand signal for the number (0, 1, 2, etc.) of players whose ability malfunctioned due to other abilities.</span>"
+        },
+        {
+            "name": "Leviathan",
+            "description": "<span>Change the Leviathan Day reminder for the next day.</span>"
+        }
+    ]
+}
