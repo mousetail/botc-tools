@@ -8,6 +8,7 @@ import collections
 Reminder = collections.namedtuple("Reminder", ["name", "description", "image", "team"])
 Script = collections.namedtuple("Script", ["name", "author", "characters"])
 
+
 def escape(e):
     return e.translate({ord("<"): "&lt;", ord('"'): "&quot;", ord("&"): "&amp;"})
 
@@ -251,9 +252,14 @@ def group_demons(night_order):
 
 
 def very_basic_markdown(e):
-    t = re.sub(r"\*(.*?)\*", lambda i: "<span class=\"reminder-token-name\">" + escape(i[1]) + "</span>", e)
+    t = re.sub(
+        r"\*(.*?)\*",
+        lambda i: '<span class="reminder-token-name">' + escape(i[1]) + "</span>",
+        e,
+    )
     t = t.replace(":reminder:", '<span class="reminder-token"></span>')
     return "<span>" + t + "</span>"
+
 
 def get_scrips(characters):
     names = os.listdir("scripts_json")
@@ -261,22 +267,29 @@ def get_scrips(characters):
         with open(f"scripts_json/{name}") as f:
             content = json.load(f)
             yield Script(
-             name= content[0]["name"],
-                author= content[0]["author"],
-                characters= [
-                    characters[
-                        (i if isinstance(i, str) else i.get("id", i.get("_id"))).replace("_","")
+                name=content[0]["name"],
+                author=content[0]["author"],
+                characters=[
+                    i
+                    for i in [
+                        characters[
+                            (
+                                i if isinstance(i, str) else i.get("id", i.get("_id"))
+                            ).replace("_", "")
+                        ]
+                        for i in content[1:]
                     ]
-                    for i in content[1:]
-                ]
+                    if i.team != "traveller"
+                ],
             )
+
 
 def main():
     characters = {i.id: i for i in get_characters.get_character_tokens("characters")}
     scripts = [*get_scrips(characters)]
 
     with open("BOTC Roles September 2025.json") as night_order_file:
-        night_order={i["name"]: i for i in json.load(night_order_file)}
+        night_order = {i["name"]: i for i in json.load(night_order_file)}
 
     with open(f"scripts/all.html", "w") as f:
         f.write(f"""
@@ -291,7 +304,6 @@ def main():
         """)
 
         for script in scripts:
-
             f.write(
                 f'<section class="sheet" style="padding: 5mm"><h1>{escape(script.name)}</h1>'
             )
@@ -432,9 +444,11 @@ def main():
 
                 for name, reminder, image, team in reminders:
                     color = (
-                        "#281f36" if name == "Dusk" else
-                        "#b8822a" if name == "Dawn" else
-                        "#13b318"
+                        "#281f36"
+                        if name == "Dusk"
+                        else "#b8822a"
+                        if name == "Dawn"
+                        else "#13b318"
                         if team not in ("townsfolk", "outsider", "demon", "minion")
                         else "#009bca"
                         if team in ("townsfolk", "outsider")
@@ -466,7 +480,7 @@ def main():
 
                 f.write("</div>")
 
-                if title=="First Night":
+                if title == "First Night":
                     f.write('<div class="fancy-decoration"></div>')
             f.write("</div>")
             f.write("</section>")

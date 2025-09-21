@@ -31,6 +31,7 @@ class Character:
     category: str | None
     first_night: NightOrder
     other_nights: NightOrder
+    team: str
 
     def get_descirption_index(self):
         prefixes = """You start knowing
@@ -208,6 +209,7 @@ def get_character_tokens(characters_folder: str) -> list[Character]:
                             and a[0]
                         )
                         or None,
+                        team=reminder_tokens_info[character["name"]]["team"],
                         first_night=NightOrder(
                             order=reminder_tokens_info[character["name"]].get(
                                 "firstNight", 0
