@@ -23,6 +23,7 @@ class NightOrder:
 @dataclass
 @functools.total_ordering
 class Character:
+    id: str
     name: str
     description: str
     image: str
@@ -190,6 +191,7 @@ def get_character_tokens(characters_folder: str) -> list[Character]:
                 character = json.load(json_file)
                 character_info.append(
                     Character(
+                        id=reminder_tokens_info[character["name"]]["id"],
                         name=character["name"],
                         description=character["description"],
                         image=character["image"],

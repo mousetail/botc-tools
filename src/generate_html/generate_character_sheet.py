@@ -2,7 +2,11 @@ import get_characters
 import json
 import itertools
 import re
+import os
+import collections
 
+Reminder = collections.namedtuple("Reminder", ["name", "description", "image", "team"])
+Script = collections.namedtuple("Script", ["name", "author", "characters"])
 
 def escape(e):
     return e.translate({ord("<"): "&lt;", ord('"'): "&quot;", ord("&"): "&amp;"})
@@ -129,70 +133,150 @@ table {
 
 .reminder {
     display: grid;
-    grid-template-columns: 4rem 25rem;
+    grid-template-columns: 3.75rem 1fr;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    align-items: center;
 
     & .small-demon-image-grid {
         width: 3.75rem;
         height: 3.75rem;
 
         & img {
-            width: 50%;
-            height: 50%;
-            transform: scale(1.5)
+            width: 49%;
+            height: 49%;
+            transform: scale(1.3);
         }
     }
 
     & img {
-        width: 3.75rem;
-        meight: 3.75rem;
+        width: 3rem;
+        height: 3rem;
+        transform: scale(1.2);
     }
 
     & p {
-        margin-bottom: 1rem;
         text-align: justify;
+        font-size: 0.7rem;
     }
 }
 
 .night-order-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 0.5rem 1fr;
+    gap: 1rem;
+
+    &>div {
+        height: calc(296mm - 8rem);
+
+        &>h2 {
+            text-align: center;
+        }
+    }
+
+    & .fancy-decoration {
+        background-image: url('../images/vertical_rule.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: 2rem;
+    }
+}
+
+span.reminder-token {
+    display: inline-block;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--color);
+    border-radius: 0.375rem;
+    break-before: avoid;
+    vertical-align: middle;
+}
+
+.reminder-token-name {
+    color: var(--color);
+    text-decoration-thickness: 0.5mm;
 }
 """
+
+
+def or_seperate(z):
+    z = [*z]
+    if len(z) > 1:
+        return ", ".join(z[:-1]) + " or " + z[-1]
+    else:
+        return z[0]
 
 
 def group_demons(night_order):
     demons = []
     demon_start_index = 0
-    for index, (reminder, image) in enumerate(night_order):
-        if demon_start_index in (0, index - len(demons)) and (
-            match := re.match(
-                r"<span>The (([A-Z]\w+)( [A-Z]\w+)*) points to a player. That player dies.",
-                reminder,
+    for index, (name, reminder, image, team) in enumerate(night_order):
+        if (
+            team == "demon"
+            and demon_start_index in (0, index - len(demons))
+            and (
+                match := re.match(
+                    r"<span>The (([A-Z]\w+)( [A-Z]\w+)*) chooses a player\. <span class=\"reminder-token\"></span>",
+                    reminder,
+                )
             )
         ):
             if demon_start_index == 0:
                 demon_start_index = index
-            demons.append((reminder.replace(match[0], "<span>"), image))
+            demons.append(
+                Reminder(
+                    name=name,
+                    description=reminder.replace(match[0], "<span>"),
+                    image=image,
+                    team=team,
+                )
+            )
 
-    if len(demons):
+    if len(demons) > 1:
         del night_order[demon_start_index : demon_start_index + len(demons)]
         night_order.insert(
             demon_start_index,
-            (
-                "<span>The demon points to a player. That player dies.</span>",
-                [i[1] for i in demons],
+            Reminder(
+                name=None,
+                description=f'<span>The {or_seperate(i.name for i in demons)} choose a player. <span class="reminder-token"></span>',
+                image=[i.image for i in demons],
+                team="demon",
             ),
         )
         for demon in demons:
-            if not re.match("<span>\\s*</span>", demon[0]):
-                print(demon[0])
+            if not re.match("<span>\\s*</span>", demon.description):
                 night_order.insert(demon_start_index + 1, demon)
 
     return night_order
 
 
+def very_basic_markdown(e):
+    t = re.sub(r"\*(.*?)\*", lambda i: "<span class=\"reminder-token-name\">" + escape(i[1]) + "</span>", e)
+    t = t.replace(":reminder:", '<span class="reminder-token"></span>')
+    return "<span>" + t + "</span>"
+
+def get_scrips(characters):
+    names = os.listdir("scripts_json")
+    for name in names:
+        with open(f"scripts_json/{name}") as f:
+            content = json.load(f)
+            yield Script(
+             name= content[0]["name"],
+                author= content[0]["author"],
+                characters= [
+                    characters[
+                        (i if isinstance(i, str) else i.get("id", i.get("_id"))).replace("_","")
+                    ]
+                    for i in content[1:]
+                ]
+            )
+
 def main():
-    characters = get_characters.get_character_tokens("characters")
+    characters = {i.id: i for i in get_characters.get_character_tokens("characters")}
+    scripts = [*get_scrips(characters)]
+
+    with open("BOTC Roles September 2025.json") as night_order_file:
+        night_order={i["name"]: i for i in json.load(night_order_file)}
 
     with open(f"scripts/all.html", "w") as f:
         f.write(f"""
@@ -206,21 +290,15 @@ def main():
             <body class="A4 landscape">
         """)
 
-        for script, script_characters in itertools.groupby(
-            characters, lambda i: i.script
-        ):
-            if script in ("fabled", "experimental", "travellers"):
-                continue
+        for script in scripts:
 
             f.write(
-                f'<section class="sheet" style="padding: 5mm"><h1>{escape(script)}</h1>'
+                f'<section class="sheet" style="padding: 5mm"><h1>{escape(script.name)}</h1>'
             )
 
-            # print(script)
             for group, category_character in itertools.groupby(
-                script_characters, lambda i: i.category
+                script.characters, lambda i: i.category
             ):
-                # print('\t'+group)
                 f.write(f"""<div class="title-container">
                     <h2>{group}</h2>
                 </div><div class="columns">""")
@@ -231,7 +309,6 @@ def main():
                         <h3>{escape(character.name)}</h3>
                         <p>{escape(character.description)}</p>
                     </div>""")
-                    # print('\t\t'+character.name)
 
                 f.write("</div>")
 
@@ -301,41 +378,45 @@ def main():
             <body class="A4 portrait">
         """)
 
-        for script, script_characters in itertools.groupby(
-            characters, lambda i: i.script
-        ):
-            script_characters = {i.name: i for i in script_characters}
+        for script in scripts:
+            script_characters = {i.name: i for i in script.characters}
 
-            with open("night_order.json") as night_order_file:
-                night_order = json.load(night_order_file)
-
-            first_night_reminders = [
-                (
-                    i["description"],
-                    "../" + script_characters[i["name"]].image
-                    if i["name"] in script_characters
-                    else "",
-                )
-                for i in night_order["first_night_info"]
-                if i["name"] in script_characters
-                or i["name"] in ("Demon Info", "Minion Info")
-            ]
-            other_night_reminders = group_demons(
-                [
-                    (
-                        i["description"],
-                        "../" + script_characters[i["name"]].image
-                        if i["name"] in script_characters
-                        else "",
+            def get_reminders(name, order):
+                return group_demons(
+                    sorted(
+                        (
+                            Reminder(
+                                name=i,
+                                description=very_basic_markdown(night_order[i][name]),
+                                image="../" + script_characters[i].image
+                                if i in script_characters
+                                else {
+                                    "Dawn": "../images/dawn.svg",
+                                    "Dusk": "../images/dusk.svg",
+                                    "Minion Info": "../images/minion.svg",
+                                    "Demon Info": "../images/demon.svg",
+                                }[i],
+                                team=night_order[i].get("team", "special"),
+                            )
+                            for i in [
+                                *script_characters.keys(),
+                                "Dawn",
+                                "Dusk",
+                                "Minion Info",
+                                "Demon Info",
+                            ]
+                            if i in night_order
+                            if name in night_order[i] and night_order[i][name]
+                        ),
+                        key=lambda i: night_order[i.name][order],
                     )
-                    for i in night_order["other_nights_info"]
-                    if i["name"] in script_characters
-                    or i["name"] in ("Demon Info", "Minion Info")
-                ]
-            )
+                )
+
+            first_night_reminders = get_reminders("firstNightReminder", "firstNight")
+            other_night_reminders = get_reminders("otherNightReminder", "otherNight")
 
             f.write(
-                f'<section class="sheet" style="padding: 5mm"><h1>{escape(script)}</h1>'
+                f'<section class="sheet" style="padding: 5mm"><h1>{escape(script.name)}</h1>'
             )
 
             f.write('<div class="night-order-layout">')
@@ -349,7 +430,17 @@ def main():
                     <h2>{title}</h2>
                 ''')
 
-                for reminder, image in reminders:
+                for name, reminder, image, team in reminders:
+                    color = (
+                        "#281f36" if name == "Dusk" else
+                        "#b8822a" if name == "Dawn" else
+                        "#13b318"
+                        if team not in ("townsfolk", "outsider", "demon", "minion")
+                        else "#009bca"
+                        if team in ("townsfolk", "outsider")
+                        else "#b31318"
+                    )
+
                     if isinstance(image, str):
                         image = f"""<img src="{escape(image)}"
                                 style="{"transform: scale(0.7)" if image.endswith(".svg") else ""}"
@@ -365,13 +456,18 @@ def main():
                         )
 
                     f.write(f"""
-                        <div class="reminder">
-                            {image}
+                        <div class="reminder" style="--color: {color}">
+                            <div style="border-right: 1mm solid var(--color)">
+                                {image}
+                            </div>
                             <p>{reminder}</p>
                         </div>
                     """)
 
                 f.write("</div>")
+
+                if title=="First Night":
+                    f.write('<div class="fancy-decoration"></div>')
             f.write("</div>")
             f.write("</section>")
 
