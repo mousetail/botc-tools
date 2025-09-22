@@ -6,7 +6,7 @@ import os
 import collections
 
 Reminder = collections.namedtuple("Reminder", ["name", "description", "image", "team"])
-Script = collections.namedtuple("Script", ["name", "author", "characters"])
+Script = collections.namedtuple("Script", ["name", "author", "characters", "jinxes"])
 
 
 def escape(e):
@@ -262,25 +262,42 @@ def very_basic_markdown(e):
 
 
 def get_scrips(characters):
+    with open("jinx.json") as f:
+        jinxes = {i["id"]:{j["id"]:j["reason"]for j in i["jinx"]} for i in json.load(f)}
+    print()
+
     names = os.listdir("scripts_json")
     for name in names:
         with open(f"scripts_json/{name}") as f:
             content = json.load(f)
+
+            script_characters=[
+                i
+                for i in [
+                    characters[
+                        (
+                            i if isinstance(i, str) else i.get("id", i.get("_id"))
+                        ).replace("_", "")
+                    ]
+                    for i in content[1:]
+                ]
+                if i.team != "traveller"
+            ]
+
+            script_jinxes=[
+                (i.id, j.id, jinxes[i.id][j.id])
+                for i in script_characters
+                for j in script_characters
+                if i.id in jinxes
+                and j.id  in jinxes[i.id]
+            ]
+            print(content[0]["name"], len(script_jinxes))
+
             yield Script(
                 name=content[0]["name"],
                 author=content[0]["author"],
-                characters=[
-                    i
-                    for i in [
-                        characters[
-                            (
-                                i if isinstance(i, str) else i.get("id", i.get("_id"))
-                            ).replace("_", "")
-                        ]
-                        for i in content[1:]
-                    ]
-                    if i.team != "traveller"
-                ],
+                characters=script_characters,
+                jinxes=script_jinxes
             )
 
 
