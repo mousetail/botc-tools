@@ -16,6 +16,7 @@ Script = collections.namedtuple(
         "layout",
         "show_player_counts",
         "spacers",
+        "size"
     ],
 )
 Jinx = collections.namedtuple("Jinx", ["name", "team", "image", "description", "id"])
@@ -147,16 +148,19 @@ def get_scrips(characters):
                 jinxes=script_jinxes,
                 layout=content[0].get("layout", {}),
                 show_player_counts=content[0].get("show_player_counts", True),
-                spacers=set(content[0].get("spacers", []))
+                spacers=set(content[0].get("spacers", [])),
+                size=content[0].get("size", "full")
             )
 
 
 def main():
     characters = {i.id: i for i in get_characters.get_character_tokens("characters")}
-    scripts = [*get_scrips(characters)]
+    scripts = sorted(get_scrips(characters), key=lambda i:(i.size, i.name))
 
     with open("BOTC Roles September 2025.json") as night_order_file:
         night_order = {i["name"]: i for i in json.load(night_order_file)}
+    
+    page = "left"
 
     with open(f"scripts/all.html", "w") as f:
         f.write(f"""
@@ -175,8 +179,16 @@ def main():
         """)
 
         for script in scripts:
+            if script.size == "full":
+                f.write("""<section class="sheet" style="padding: 5mm">""")
+            elif page == "left":
+                f.write("""<section class="sheet two-page-sheet">""")
+
+            if script.size == "half":
+                f.write("""<div class="half-page">""")
+
             f.write(
-                f'''<section class="sheet" style="padding: 5mm">
+                f'''
                 <div style="top: 5mm; right: 5mm; position: absolute">* not the first night</div>
                 <h1>{escape(script.name)}</h1>'''
             )
@@ -278,7 +290,16 @@ def main():
                     </table>
                 """)
 
-            f.write("</section>")
+            if script.size == "half":
+                f.write("""</div>""")
+
+            if script.size == "full":
+                f.write("</section>")
+                page = "left"
+            elif page == "left":
+                page = "right"
+            else:
+                page = "left"
         f.write("</body></html>")
     with open("scripts/night_order.html", "w") as f:
         f.write(f"""

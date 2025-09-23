@@ -1,1 +1,82 @@
-[{"_id": "_meta", "author": "Steven Medway", "name": "bad moon rising"}, {"_id": "grandmother"}, {"_id": "chambermaid"}, {"_id": "sailor"}, {"_id": "exorcist"}, {"_id": "gambler"}, {"_id": "innkeeper"}, {"_id": "gossip"}, {"_id": "courtier"}, {"_id": "professor"}, {"_id": "minstrel"}, {"_id": "tealady"}, {"_id": "fool"}, {"_id": "pacifist"}, {"_id": "goon"}, {"_id": "lunatic"}, {"_id": "tinker"}, {"_id": "moonchild"}, {"_id": "godfather"}, {"_id": "devilsadvocate"}, {"_id": "assassin"}, {"_id": "mastermind"}, {"_id": "pukka"}, {"_id": "po"}, {"_id": "shabaloth"}, {"_id": "zombuul"}]
+[
+    {
+        "_id": "_meta",
+        "author": "Steven Medway",
+        "name": "Bad Moon Rising"
+    },
+    {
+        "_id": "grandmother"
+    },
+    {
+        "_id": "chambermaid"
+    },
+    {
+        "_id": "sailor"
+    },
+    {
+        "_id": "exorcist"
+    },
+    {
+        "_id": "gambler"
+    },
+    {
+        "_id": "innkeeper"
+    },
+    {
+        "_id": "gossip"
+    },
+    {
+        "_id": "courtier"
+    },
+    {
+        "_id": "professor"
+    },
+    {
+        "_id": "minstrel"
+    },
+    {
+        "_id": "tealady"
+    },
+    {
+        "_id": "fool"
+    },
+    {
+        "_id": "pacifist"
+    },
+    {
+        "_id": "goon"
+    },
+    {
+        "_id": "lunatic"
+    },
+    {
+        "_id": "tinker"
+    },
+    {
+        "_id": "moonchild"
+    },
+    {
+        "_id": "godfather"
+    },
+    {
+        "_id": "devilsadvocate"
+    },
+    {
+        "_id": "assassin"
+    },
+    {
+        "_id": "mastermind"
+    },
+    {
+        "_id": "pukka"
+    },
+    {
+        "_id": "po"
+    },
+    {
+        "_id": "shabaloth"
+    },
+    {
+        "_id": "zombuul"
+    }
+]

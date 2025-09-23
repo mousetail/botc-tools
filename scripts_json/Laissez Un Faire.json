@@ -2,7 +2,8 @@
     {
         "id": "_meta",
         "author": "Steven Medway",
-        "name": "Laissez Un Faire"
+        "name": "Laissez Un Faire",
+        "size": "half"
     },
     {
         "id": "balloonist"
