@@ -1,8 +1,9 @@
 [
     {
         "id": "_meta",
-        "author": "",
-        "name": "Monkey Do Math",
+        "author": "Baron von Klutz",
+        "name": "One in one out",
+        "show_player_counts": false,
         "layout": {
             "townsfolk": [
                 1,
@@ -25,41 +26,47 @@
             "demon": [
                 9,
                 1,
-                4,
+                3,
                 2
             ],
             "jinx": [
                 11,
                 1,
+                4,
+                2
+            ],
+            "fabled": [
+                9,
+                4,
                 1,
                 2
             ]
-        },
-        "show_player_counts": false
+        }
     },
-    "sailor",
+    "steward",
+    "knight",
+    "highpriestess",
     "villageidiot",
-    "mathematician",
-    "innkeeper",
-    "acrobat",
-    "lycanthrope",
-    "exorcist",
-    "gossip",
-    "courtier",
-    "professor",
-    "alchemist",
-    "tealady",
-    "mayor",
+    "snakecharmer",
+    "fortuneteller",
+    "oracle",
+    "monk",
+    "amnesiac",
+    "fisherman",
+    "seamstress",
+    "farmer",
+    "cannibal",
+    "ogre",
     "goon",
-    "tinker",
-    "zealot",
-    "moonchild",
-    "godfather",
+    "recluse",
+    "drunk",
     "poisoner",
-    "devilsadvocate",
-    "assassin",
-    "organgrinder",
-    "pukka",
-    "shabaloth",
-    "zombuul"
+    "harpy",
+    "spy",
+    "mezepheles",
+    "kazali",
+    "imp",
+    "ojo",
+    "fanggu",
+    "spiritofivory"
 ]

@@ -1,8 +1,9 @@
 [
     {
         "id": "_meta",
-        "author": "",
-        "name": "Monkey Do Math",
+        "author": "Ekin",
+        "name": "Lunar Eclipse",
+        "show_player_counts": false,
         "layout": {
             "townsfolk": [
                 1,
@@ -25,41 +26,52 @@
             "demon": [
                 9,
                 1,
-                4,
+                3,
                 2
             ],
             "jinx": [
                 11,
                 1,
+                4,
+                2
+            ],
+            "fabled": [
+                9,
+                4,
                 1,
                 2
             ]
-        },
-        "show_player_counts": false
+        }
     },
+    "grandmother",
+    "pixie",
     "sailor",
-    "villageidiot",
+    "chambermaid",
     "mathematician",
     "innkeeper",
-    "acrobat",
     "lycanthrope",
-    "exorcist",
-    "gossip",
-    "courtier",
-    "professor",
-    "alchemist",
-    "tealady",
+    "savant",
+    "artist",
+    "tea_lady",
+    "magician",
     "mayor",
+    "cannibal",
     "goon",
-    "tinker",
-    "zealot",
-    "moonchild",
+    "barber",
+    "lunatic",
+    "puzzlemaster",
     "godfather",
-    "poisoner",
-    "devilsadvocate",
+    "devils_advocate",
+    "spy",
     "assassin",
-    "organgrinder",
-    "pukka",
-    "shabaloth",
-    "zombuul"
+    "marionette",
+    "no_dashii",
+    "zombuul",
+    "vigormortis",
+    "beggar",
+    "barista",
+    "harlot",
+    "apprentice",
+    "voudon",
+    "spirit_of_ivory"
 ]

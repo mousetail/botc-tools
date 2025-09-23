@@ -6,7 +6,19 @@ import os
 import collections
 
 Reminder = collections.namedtuple("Reminder", ["name", "description", "image", "team"])
-Script = collections.namedtuple("Script", ["name", "author", "characters", "jinxes"])
+Script = collections.namedtuple(
+    "Script",
+    [
+        "name",
+        "author",
+        "characters",
+        "jinxes",
+        "layout",
+        "show_player_counts",
+        "spacers",
+    ],
+)
+Jinx = collections.namedtuple("Jinx", ["name", "team", "image", "description", "id"])
 
 
 def escape(e):
@@ -19,185 +31,6 @@ characters_per_category = {
     "Outsiders": [0, 1, 0, 1, 2, 0, 1, 2, 0, 1, 2],
     "Townsfolk": [3, 3, 5, 5, 5, 7, 7, 7, 9, 9, 9],
 }
-
-css = """
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    font-size: 12.5px;
-}
-
-@page {
-    size: A4;
-    margin: 1em;
-}
-
-@font-face {
-    font-family: 'Dumbledor';
-    src: url('../dumbledor.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal
-}
-
-h1, h2, h3 {
-    font-family: 'Dumbledor';
-}
-
-h1 {
-    display: block;
-    margin: auto;
-    text-align: center;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: #4f0e10
-}
-
-h3 {
-    font-size: 1.1rem;
-}
-
-p {
-    font-size: 0.8rem;
-}
-
-.title-container {
-    border-bottom: 2px solid #4f0e10;
-    position: relative;
-    height: 0;
-    margin-bottom: 0.9rem;
-
-    & h2 {
-        font-size: 0.8rem;
-        display: block;
-        background-color: white;
-        right: 4rem;
-        top: -1rem;
-        width: 7rem;
-        height: 2rem;
-        padding: 0.45rem;
-        border: 2px solid #4f0e10;
-        border-radius: 1rem;
-        position: absolute;
-        text-align: center;
-        color:  #4f0e10;
-    }
-}
-
-.columns {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 21.5rem);
-    gap: 0.25rem;
-}
-
-.character {
-    display: grid;
-    grid-template-columns: 5rem 16.5rem;
-    grid-template-rows: 1.5rem 5rem;
-
-    & h3 {
-        margin: 0;
-        break-after: avoid;
-    }
-
-    & p {
-        margin: 0;
-        text-align: justify;
-    }
-
-    & img {
-        width: 3.75rem;
-        height: 3.75rem;
-        grid-row: 1 / span 2;
-        transform: scale(1.6) translate(0.25rem, 0);
-        transform-origin: center;
-    }
-}
-
-table {
-    table-layout: fixed;
-    width: 50%;
-    border-collapse: collapse;
-    margin: auto;
-
-    & td:not(:last-child) {
-        border-right: 1px solid black;
-    }
-
-    & td {
-        text-align: center;
-    }
-}
-
-.reminder {
-    display: grid;
-    grid-template-columns: 3.75rem 1fr;
-    gap: 0.5rem;
-    margin-bottom: 0.5rem;
-    align-items: center;
-
-    & .small-demon-image-grid {
-        width: 3.75rem;
-        height: 3.75rem;
-
-        & img {
-            width: 49%;
-            height: 49%;
-            transform: scale(1.3);
-        }
-    }
-
-    & img {
-        width: 3rem;
-        height: 3rem;
-        transform: scale(1.2);
-    }
-
-    & p {
-        text-align: justify;
-        font-size: 0.7rem;
-    }
-}
-
-.night-order-layout {
-    display: grid;
-    grid-template-columns: 1fr 0.5rem 1fr;
-    gap: 1rem;
-
-    &>div {
-        height: calc(296mm - 8rem);
-
-        &>h2 {
-            text-align: center;
-        }
-    }
-
-    & .fancy-decoration {
-        background-image: url('../images/vertical_rule.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 2rem;
-    }
-}
-
-span.reminder-token {
-    display: inline-block;
-    width: 0.75rem;
-    height: 0.75rem;
-    background: var(--color);
-    border-radius: 0.375rem;
-    break-before: avoid;
-    vertical-align: middle;
-}
-
-.reminder-token-name {
-    color: var(--color);
-    text-decoration-thickness: 0.5mm;
-}
-"""
 
 
 def or_seperate(z):
@@ -263,15 +96,16 @@ def very_basic_markdown(e):
 
 def get_scrips(characters):
     with open("jinx.json") as f:
-        jinxes = {i["id"]:{j["id"]:j["reason"]for j in i["jinx"]} for i in json.load(f)}
-    print()
+        jinxes = {
+            i["id"]: {j["id"]: j["reason"] for j in i["jinx"]} for i in json.load(f)
+        }
 
     names = os.listdir("scripts_json")
     for name in names:
         with open(f"scripts_json/{name}") as f:
             content = json.load(f)
 
-            script_characters=[
+            script_characters = [
                 i
                 for i in [
                     characters[
@@ -284,20 +118,36 @@ def get_scrips(characters):
                 if i.team != "traveller"
             ]
 
-            script_jinxes=[
-                (i.id, j.id, jinxes[i.id][j.id])
-                for i in script_characters
-                for j in script_characters
-                if i.id in jinxes
-                and j.id  in jinxes[i.id]
-            ]
-            print(content[0]["name"], len(script_jinxes))
+            script_jinxes = sorted(
+                [
+                    (i, j, jinxes[i.id][j.id])
+                    for i in script_characters
+                    for j in script_characters
+                    if i.id in jinxes and j.id in jinxes[i.id]
+                ],
+                key=lambda i: len(i[2]),
+            )
 
             yield Script(
                 name=content[0]["name"],
                 author=content[0]["author"],
-                characters=script_characters,
-                jinxes=script_jinxes
+                characters=[
+                    *script_characters,
+                ]
+                + [
+                    Jinx(
+                        name=" & ".join(i.name for i in jinx[:2]),
+                        image=[i.image for i in jinx[:2]],
+                        team="jinx",
+                        description=jinx[2],
+                        id="-".join(i.id for i in jinx[:2])
+                    )
+                    for jinx in script_jinxes
+                ],
+                jinxes=script_jinxes,
+                layout=content[0].get("layout", {}),
+                show_player_counts=content[0].get("show_player_counts", True),
+                spacers=set(content[0].get("spacers", []))
             )
 
 
@@ -314,7 +164,11 @@ def main():
             <html>
             <head>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
-                <style>{css}
+                <link rel="stylesheet" href="../style.css">
+                <style>
+                    @page {{
+                        size: A4 landspace;
+                    }}
                 </style>
             </head>
             <body class="A4 landscape">
@@ -322,76 +176,107 @@ def main():
 
         for script in scripts:
             f.write(
-                f'<section class="sheet" style="padding: 5mm"><h1>{escape(script.name)}</h1>'
+                f'''<section class="sheet" style="padding: 5mm">
+                <div style="top: 5mm; right: 5mm; position: absolute">* not the first night</div>
+                <h1>{escape(script.name)}</h1>'''
             )
 
+            f.write('<div class="columns">')
+
             for group, category_character in itertools.groupby(
-                script.characters, lambda i: i.category
+                script.characters, lambda i: i.team
             ):
-                f.write(f"""<div class="title-container">
+                if layout := script.layout.get(group):
+                    top, left, width, height = layout
+                    layout_style = f"grid-row: {top} / span {height}; grid-column: {left} / span {width}"
+                else:
+                    layout_style = ""
+
+                f.write(f"""
+                <div class="subgrid {group}" style="{layout_style}">
+                <div class="title-container">
                     <h2>{group}</h2>
-                </div><div class="columns">""")
+                </div>""")
 
                 for character in category_character:
-                    f.write(f"""<div class="character">
-                        <img src="../{escape(character.image)}">
-                        <h3>{escape(character.name)}</h3>
-                        <p>{escape(character.description)}</p>
-                    </div>""")
+                    if character.id in script.spacers:
+                        f.write("<div></div>")
 
-                f.write("</div>")
+                    if isinstance(character.image, str):
+                        img = f"""<img src="../{escape(character.image)}">"""
+                    else:
+                        img = (
+                            f"""<div class='jinx-image'>"""
+                            + "".join(
+                                f'<img src="../{escape(i)}">' for i in character.image
+                            )
+                            + "</div>"
+                        )
 
-            f.write("""
-                <table layout="fixed">
-                    <tr>
-                        <th colspan="2">Residents</th>
+                    f.write(f"""
+                        <div class="character">
+                            {img}
+                            <h3>{escape(character.name)}</h3>
+                            <p>{escape(character.description)}</p>
+                        </div>
+                    """)
 
-                        <th>5</th>
-                        <th>6</th>
-                        <th>7</th>
-                        <th>8</th>
-                        <th>9</th>
-                        <th>10</th>
-                        <th>11</th>
-                        <th>12</th>
-                        <th>13</th>
-                        <th>14</th>
-                        <th>15</th>
-                    </tr>
+                f.write("""</div>""")
 
-                    <tr>
-                        <th colspan="2">Townsfolk</th>
+            f.write("</div>")
 
-                        <td colspan="2">3</td>
-                        <td colspan="3">5</td>
-                        <td colspan="3">7</td>
-                        <td colspan="3">9</td>
-                    </tr>
+            if script.show_player_counts:
+                f.write("""
+                    <table layout="fixed">
+                        <tr>
+                            <th colspan="2">Residents</th>
 
-                    <tr>
-                        <th colspan="2">Outsiders</th>
+                            <th>5</th>
+                            <th>6</th>
+                            <th>7</th>
+                            <th>8</th>
+                            <th>9</th>
+                            <th>10</th>
+                            <th>11</th>
+                            <th>12</th>
+                            <th>13</th>
+                            <th>14</th>
+                            <th>15</th>
+                        </tr>
 
-                        <td>0</td>
-                        <td>1</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
+                        <tr>
+                            <th colspan="2">Townsfolk</th>
 
-                    <tr>
-                        <th colspan="2">Minions</th>
-                        <td colspan="5">1</td>
-                        <td colspan="3">2</td>
-                        <td colspan="3">3</td>
-                    </tr>
-                </table>
-            """)
+                            <td colspan="2">3</td>
+                            <td colspan="3">5</td>
+                            <td colspan="3">7</td>
+                            <td colspan="3">9</td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="2">Outsiders</th>
+
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+
+                        <tr>
+                            <th colspan="2">Minions</th>
+                            <td colspan="5">1</td>
+                            <td colspan="3">2</td>
+                            <td colspan="3">3</td>
+                        </tr>
+                    </table>
+                """)
 
             f.write("</section>")
         f.write("</body></html>")
@@ -401,8 +286,7 @@ def main():
             <html>
             <head>
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paper-css/0.4.1/paper.css">
-                <style>{css}
-                </style>
+                <link rel="stylesheet" href="../style.css">
             </head>
             <body class="A4 portrait">
         """)
@@ -445,7 +329,8 @@ def main():
             other_night_reminders = get_reminders("otherNightReminder", "otherNight")
 
             f.write(
-                f'<section class="sheet" style="padding: 5mm"><h1>{escape(script.name)}</h1>'
+                f'''<section class="sheet" style="padding: 5mm; position: relative">
+                <h1>{escape(script.name)}</h1>'''
             )
 
             f.write('<div class="night-order-layout">')
@@ -464,7 +349,7 @@ def main():
                         "#281f36"
                         if name == "Dusk"
                         else "#b8822a"
-                        if name == "Dawn"
+                        if name == "Dawn" or team == "fabled"
                         else "#13b318"
                         if team not in ("townsfolk", "outsider", "demon", "minion")
                         else "#009bca"

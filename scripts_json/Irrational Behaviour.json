@@ -1,1 +1,53 @@
-[{"id":"_meta","author":"josh :)","name":"Irrational Behaviour"},"noble","librarian","shugenja","high_priestess","balloonist","village_idiot","fortune_teller","monk","oracle","seamstress","alsaahir","banshee","cannibal","hermit","mutant","zealot","puzzlemaster","cerenovus","poisoner","wraith","wizard","witch","lord_of_typhon","fang_gu","vigormortis"]
+[
+    {
+        "id": "_meta",
+        "show_player_counts": false,
+        "author": "josh :)",
+        "name": "Irrational Behaviour",
+        "layout": {
+            "minion": [
+                8,
+                1,
+                4,
+                3
+            ],
+            "demon": [
+                11,
+                1,
+                3,
+                2
+            ],
+            "jinx": [
+                11,
+                4,
+                1,
+                2
+            ]
+        }
+    },
+    "noble",
+    "librarian",
+    "shugenja",
+    "high_priestess",
+    "balloonist",
+    "village_idiot",
+    "fortune_teller",
+    "monk",
+    "oracle",
+    "seamstress",
+    "alsaahir",
+    "banshee",
+    "cannibal",
+    "hermit",
+    "mutant",
+    "zealot",
+    "puzzlemaster",
+    "cerenovus",
+    "poisoner",
+    "wraith",
+    "wizard",
+    "witch",
+    "lord_of_typhon",
+    "fang_gu",
+    "vigormortis"
+]

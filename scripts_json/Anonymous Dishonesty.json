@@ -1,1 +1,52 @@
-[{"id":"_meta","author":"","name":"Anonymous Dishonesty"},"investigator","grandmother","shugenja","pixie","high_priestess","general","flowergirl","undertaker","savant","farmer","banshee","alsaahir","atheist","ogre","sweetheart","drunk","barber","hatter","harpy","marionette","cerenovus","scarlet_woman","godfather","ojo"]
+[
+    {
+        "id": "_meta",
+        "author": "",
+        "name": "Anonymous Dishonesty",
+        "show_player_counts": false,
+        "layout": {
+            "outsider": [
+                6,
+                1,
+                2,
+                4
+            ],
+            "minion": [
+                6,
+                3,
+                2,
+                4
+            ],
+            "demon": [
+                10,
+                1,
+                4,
+                2
+            ]
+        }
+    },
+    "investigator",
+    "grandmother",
+    "shugenja",
+    "pixie",
+    "high_priestess",
+    "general",
+    "flowergirl",
+    "undertaker",
+    "savant",
+    "farmer",
+    "banshee",
+    "alsaahir",
+    "atheist",
+    "ogre",
+    "sweetheart",
+    "drunk",
+    "barber",
+    "hatter",
+    "harpy",
+    "marionette",
+    "cerenovus",
+    "scarlet_woman",
+    "godfather",
+    "ojo"
+]

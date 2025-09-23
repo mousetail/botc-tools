@@ -1,1 +1,116 @@
-[{"id": "_meta", "name": "Contempt", "author": "Milk"}, {"id": "steward"}, {"id": "noble"}, {"id": "bountyhunter"}, {"id": "highpriestess"}, {"id": "balloonist"}, {"id": "mathematician"}, {"id": "oracle"}, {"id": "slayer"}, {"id": "fisherman"}, {"id": "juggler"}, {"id": "soldier"}, {"id": "cannibal"}, {"id": "ravenkeeper"}, {"id": "butler"}, {"id": "sweetheart"}, {"id": "plaguedoctor"}, {"id": "barber"}, {"id": "xaan"}, {"id": "marionette"}, {"id": "scarletwoman"}, {"id": "vizier"}, {"id": "nodashii"}, {"id": "imp"}, {"id": "ojo"}]
+[
+    {
+        "id": "_meta",
+        "name": "Contempt",
+        "author": "Milk",
+        "layout": {
+            "townsfolk": [
+                1,
+                2,
+                3,
+                6
+            ],
+            "jinx": [
+                1,
+                1,
+                1,
+                6
+            ],
+            "demon": [
+                7,
+                2,
+                3,
+                2
+            ],
+            "minion": [
+                9,
+                1,
+                4,
+                2
+            ],
+            "outsider": [
+                11,
+                1,
+                4,
+                2
+            ]
+        },
+        "show_player_counts": false,
+        "spacers": [
+            "oracle",
+            "cannibal"
+        ]
+    },
+    {
+        "id": "steward"
+    },
+    {
+        "id": "noble"
+    },
+    {
+        "id": "bountyhunter"
+    },
+    {
+        "id": "highpriestess"
+    },
+    {
+        "id": "balloonist"
+    },
+    {
+        "id": "mathematician"
+    },
+    {
+        "id": "oracle"
+    },
+    {
+        "id": "slayer"
+    },
+    {
+        "id": "fisherman"
+    },
+    {
+        "id": "juggler"
+    },
+    {
+        "id": "soldier"
+    },
+    {
+        "id": "cannibal"
+    },
+    {
+        "id": "ravenkeeper"
+    },
+    {
+        "id": "butler"
+    },
+    {
+        "id": "sweetheart"
+    },
+    {
+        "id": "plaguedoctor"
+    },
+    {
+        "id": "barber"
+    },
+    {
+        "id": "xaan"
+    },
+    {
+        "id": "marionette"
+    },
+    {
+        "id": "scarletwoman"
+    },
+    {
+        "id": "vizier"
+    },
+    {
+        "id": "nodashii"
+    },
+    {
+        "id": "imp"
+    },
+    {
+        "id": "ojo"
+    }
+]

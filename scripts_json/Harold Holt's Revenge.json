@@ -1,1 +1,109 @@
-[{"id":"_meta","author":"","name":"Harold Holt's Reventge"},{"id": "librarian"}, {"id": "investigator"}, {"id": "shugenja"}, {"id": "balloonist"}, {"id": "dreamer"}, {"id": "snakecharmer"}, {"id": "towncrier"}, {"id": "slayer"}, {"id": "savant"}, {"id": "amnesiac"}, {"id": "seamstress"}, {"id": "courtier"}, {"id": "magician"}, {"id": "mutant"}, {"id": "damsel"}, {"id": "lunatic"}, {"id": "politician"}, {"id": "cerenovus"}, {"id": "pithag"}, {"id": "baron"}, {"id": "goblin"}, {"id": "marionette"}, {"id": "leviathan"}]
+[
+    {
+        "id": "_meta",
+        "show_player_counts": false,
+        "author": "",
+        "name": "Harold Holt's Reventge",
+        "layout": {
+            "townsfolk": [
+                1,
+                1,
+                3,
+                6
+            ],
+            "minion": [
+                1,
+                4,
+                1,
+                6
+            ],
+            "outsider": [
+                7,
+                1,
+                4,
+                2
+            ],
+            "demon": [
+                9,
+                1,
+                1,
+                2
+            ],
+            "jinx": [
+                9,
+                2,
+                3,
+                3
+            ]
+        }
+    },
+    {
+        "id": "librarian"
+    },
+    {
+        "id": "investigator"
+    },
+    {
+        "id": "shugenja"
+    },
+    {
+        "id": "balloonist"
+    },
+    {
+        "id": "dreamer"
+    },
+    {
+        "id": "snakecharmer"
+    },
+    {
+        "id": "towncrier"
+    },
+    {
+        "id": "slayer"
+    },
+    {
+        "id": "savant"
+    },
+    {
+        "id": "amnesiac"
+    },
+    {
+        "id": "seamstress"
+    },
+    {
+        "id": "courtier"
+    },
+    {
+        "id": "magician"
+    },
+    {
+        "id": "mutant"
+    },
+    {
+        "id": "damsel"
+    },
+    {
+        "id": "lunatic"
+    },
+    {
+        "id": "politician"
+    },
+    {
+        "id": "cerenovus"
+    },
+    {
+        "id": "pithag"
+    },
+    {
+        "id": "baron"
+    },
+    {
+        "id": "goblin"
+    },
+    {
+        "id": "marionette"
+    },
+    {
+        "id": "leviathan"
+    }
+]

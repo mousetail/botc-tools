@@ -1,1 +1,109 @@
-[{"id":"_meta","author":"","name":"Revenge of the Martian Vampires"}, {"id": "librarian"}, {"id": "pixie"}, {"id": "empath"}, {"id": "general"}, {"id": "snakecharmer"}, {"id": "balloonist"}, {"id": "innkeeper"}, {"id": "exorcist"}, {"id": "savant"}, {"id": "courtier"}, {"id": "fisherman"}, {"id": "mayor"}, {"id": "cannibal"}, {"id": "drunk"}, {"id": "saint"}, {"id": "mutant"}, {"id": "heretic"}, {"id": "politician"}, {"id": "eviltwin"}, {"id": "poisoner"}, {"id": "mastermind"}, {"id": "scarletwoman"}, {"id": "imp"}, {"id": "pukka"}, {"id": "fanggu"}]
+[
+    {
+        "id": "_meta",
+        "show_player_counts": false,
+        "author": "",
+        "name": "Revenge of the Martian Vampires",
+        "layout": {
+            "outsider": [
+                6,
+                1,
+                4,
+                3
+            ],
+            "minion": [
+                9,
+                1,
+                4,
+                2
+            ],
+            "demon": [
+                11,
+                1,
+                3,
+                2
+            ],
+            "jinx": [
+                11,
+                4,
+                1,
+                2
+            ]
+        }
+    },
+    {
+        "id": "librarian"
+    },
+    {
+        "id": "pixie"
+    },
+    {
+        "id": "empath"
+    },
+    {
+        "id": "general"
+    },
+    {
+        "id": "snakecharmer"
+    },
+    {
+        "id": "balloonist"
+    },
+    {
+        "id": "innkeeper"
+    },
+    {
+        "id": "exorcist"
+    },
+    {
+        "id": "savant"
+    },
+    {
+        "id": "courtier"
+    },
+    {
+        "id": "fisherman"
+    },
+    {
+        "id": "mayor"
+    },
+    {
+        "id": "cannibal"
+    },
+    {
+        "id": "drunk"
+    },
+    {
+        "id": "saint"
+    },
+    {
+        "id": "mutant"
+    },
+    {
+        "id": "heretic"
+    },
+    {
+        "id": "politician"
+    },
+    {
+        "id": "eviltwin"
+    },
+    {
+        "id": "poisoner"
+    },
+    {
+        "id": "mastermind"
+    },
+    {
+        "id": "scarletwoman"
+    },
+    {
+        "id": "imp"
+    },
+    {
+        "id": "pukka"
+    },
+    {
+        "id": "fanggu"
+    }
+]
